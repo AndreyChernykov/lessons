@@ -1,8 +1,11 @@
 # lessons
 
+//лабораторная работа №1 все варианты
+
 package laboratory_work_1;
 
 public class Main {
+
 	static int a, b, x, u;
 	static int iTask = 0;// счёт примеров
 	static int iVar = 1;// счёт вариантов
