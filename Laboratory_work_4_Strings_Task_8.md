@@ -9,6 +9,7 @@
 import java.util.Scanner;
 
 public class Main {
+
 	static String str;
 	static char [][]strArr;
 	public static void main(String []args) {
