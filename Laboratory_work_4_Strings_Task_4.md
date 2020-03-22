@@ -9,22 +9,26 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-	
+
 	static String str;
-	
-	public static void main(String []args) {
-		
+
+	public static void main(String []args) {	
 		entStr();
-		transform(str);
-	}
+		if(transform()){
+			System.out.println(str + " является полиндромом");
+		}else {
+			System.out.println(str + " не является полиндромом");
+		}
 	
-	static void entStr() {
-		System.out.print("Введите строку: ");
-		Scanner scanStr = new Scanner(System.in);
-		str = scanStr.nextLine();
 	}
-	
-	static String transform(String str) {
+
+		static void entStr() {
+			System.out.print("Введите строку: ");
+			Scanner scanStr = new Scanner(System.in);
+			str = scanStr.nextLine();
+	}
+
+	static boolean transform() {
 		char []strArray = str.toCharArray();
 		str = "";
 		for(int i = 0; i < strArray.length; i++ ) {
@@ -37,14 +41,10 @@ public class Main {
 			if(str.charAt(i) == str.charAt(j)) {
 				pol++;
 			}else{
-				break;
+				return false;
 			}
 		}
-		if(pol == str.length()/2){
-			System.out.println(str + " является полиндромом");
-		}else {
-			System.out.println(str + " не является полиндромом");
-		}
-		return str;
+		return true;
 	}
+
 }
