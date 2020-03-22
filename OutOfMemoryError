@@ -1,0 +1,16 @@
+public class Main {
+
+	static byte []memory;
+  
+	public static void main(String []args){
+		try {
+			memoryError();
+		}catch(OutOfMemoryError error){
+			System.out.println("Произошла ошибка памяти...");
+		}
+	}
+	
+	public static void memoryError() {
+		memory = new byte[(int)Math.pow(1024, 3)];
+	}
+}
