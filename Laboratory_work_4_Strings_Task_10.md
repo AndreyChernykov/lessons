@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 /*
@@ -6,40 +6,42 @@ import java.util.Scanner;
 Дан текст. Найти сумму имеющихся в нем цифр.
  */
 
-public class Main {	
+public class Main {
+
+static int sumNum = 0;
+static String str, tempStr = "";
+
+public static void main(String [] args) {
+
+	entText();
+	numsInText();
+	System.out.println("Сумма всех чисел в строке составляет " + sumNum);
+}
+
+static void entText() {//читаем введенную строку
+
+	System.out.print("Введите текст с числами ");
+	Scanner scan = new Scanner(System.in);
+	str = scan.nextLine();
+	str = str.concat(" ");//добавляем вконце символ, для прочтения последних символов
+}  
+
+static void numsInText() {//читаем текст и подсчитываем сумму чисел
 	
-	static String str;
-	static ArrayList<String> numsArr = new ArrayList<>();
-	
-	public static void main(String [] args) {
-		entText();
-		System.out.println("Сумма всех чисел в строке составляет " + numsInText());
-	}
-	
-	static void entText() {//читаем введенную строку
-		System.out.print("Введите текст с числами ");
-		Scanner scan = new Scanner(System.in);
-		str = scan.nextLine();
-		str = str.concat("n");//добавляем вконце символ, для прочтения последних символов
-	}  
-	
-	static int numsInText() {//читаем текст и добавляем числа в лист 
-		String tempStr = "";
-		int sumNum = 0;
-		for(int i = 0; i < str.length(); i++) {	
-			if(str.charAt(i) > 47 && str.charAt(i) < 60) {
-				tempStr = tempStr.concat(Character.toString(str.charAt(i)));		
-			}else if(str.charAt(i) < 47 || str.charAt(i) > 60){		
-				numsArr.add(tempStr);
-				tempStr = "";
-			}
+	for(int i = 0; i < str.length(); i++) {
+		if(str.charAt(i) > 47 && str.charAt(i) < 60){
+			
+			tempStr = tempStr.concat(Character.toString(str.charAt(i)));
 		}
-	
-		for(int i = 0; i < numsArr.size(); i++) {//считаем сумму всех чисел в листе
-			if(numsArr.get(i) != "") {
-				sumNum += Integer.parseInt(numsArr.get(i));
-			}
+		if (str.charAt(i) < 47 || str.charAt(i) > 60){
+			
+			sumNum += Integer.parseInt(tempStr);
+			tempStr = "0";
 		}
-		return sumNum;
+		
 	}
+
+}
+
+
 }
